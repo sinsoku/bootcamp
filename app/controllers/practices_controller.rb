@@ -18,7 +18,6 @@ class PracticesController < ApplicationController
 
   def create
     @practice = Practice.new(practice_params)
-
     if @practice.save
       SlackNotification.notify "<#{url_for(current_user)}|#{current_user.login_name}>が<#{url_for(@practice)}|#{@practice.title}>を作成しました。",
                                username: "#{current_user.login_name}@bootcamp.fjord.jp",
@@ -57,7 +56,8 @@ class PracticesController < ApplicationController
       :open_product,
       :include_progress,
       :memo,
-      category_ids: []
+      category_ids: [],
+      reference_books_attributes: %i[id title asin _destroy]
     )
   end
 
