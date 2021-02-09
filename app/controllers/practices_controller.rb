@@ -57,7 +57,7 @@ class PracticesController < ApplicationController
       :include_progress,
       :memo,
       category_ids: [],
-      reference_books_attributes: %i[id title asin _destroy]
+      reference_books_attributes: %i[id title price page_url cover _destroy]
     )
   end
 
