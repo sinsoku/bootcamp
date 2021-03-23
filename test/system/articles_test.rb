@@ -10,7 +10,7 @@ class ArticlesTest < ApplicationSystemTestCase
   test 'show listing articles' do
     login_user 'komagata', 'testtest'
     visit articles_url
-    assert_selector ".articles"
+    assert_selector '.articles'
   end
 
   test 'create article' do
@@ -90,12 +90,12 @@ class ArticlesTest < ApplicationSystemTestCase
     visit articles_url
     click_on '内容修正', match: :first
 
-    fill_in "article[title]", with: "タイトル"
-    fill_in "article[body]", with: "内容"
-    fill_in "article[tag_list]", with: "FJORD"
-    click_on "更新する"
-    click_on "FJORD"
+    fill_in 'article[title]', with: 'タイトル'
+    fill_in 'article[body]', with: '内容'
+    fill_in 'article[tag_list]', with: 'FJORD'
+    click_on '更新する'
+    click_on 'FJORD'
 
-    assert_equal 2, all(".articles__item").length
+    assert_equal 2, all('.articles__item').length
   end
 end
