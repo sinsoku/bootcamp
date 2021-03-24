@@ -1,6 +1,6 @@
 <template lang="pug">
   .container(v-if="loaded && notifications.length > 0")
-    nav.pagination(v-if="totalPages > 1")
+    nav.o-pagination(v-if="totalPages > 1")
       pager-top(
         v-model="currentPage"
         :page-count="totalPages"
@@ -10,15 +10,15 @@
         :first-button-text="`<i class='fas fa-angle-double-left'></i>`"
         :last-button-text="`<i class='fas fa-angle-double-right'></i>`"
         :click-handler="paginateClickCallback"
-        :container-class="'pagination__items'"
-        :page-class="'pagination__item'"
-        :page-link-class="'pagination__item-link'"
+        :container-class="'o-pagination__items'"
+        :page-class="'o-pagination__item'"
+        :page-link-class="'o-pagination__item-link'"
         :disabled-class="'is-disabled'"
         :active-class="'is-active'"
-        :prev-class="'is-prev pagination__item'"
-        :prev-link-class="'is-prev pagination__item-link'"
-        :next-class="'is-next pagination__item'"
-        :next-link-class="'is-next pagination__item-link'"
+        :prev-class="'is-prev o-pagination__item'"
+        :prev-link-class="'is-prev o-pagination__item-link'"
+        :next-class="'is-next o-pagination__item'"
+        :next-link-class="'is-next o-pagination__item-link'"
         :first-last-button="true"
         :hide-prev-next="true"
         :margin-pages="0"
@@ -29,7 +29,7 @@
         :key="notification.id"
         :notification="notification")
       unconfirmed-links-open-button(v-if="isMentor && isUnreadPage" label="未読の通知を一括で開く")
-    nav.pagination(v-if="totalPages > 1")
+    nav.o-pagination(v-if="totalPages > 1")
       pager-bottom(
         v-model="currentPage"
         :page-count="totalPages"
@@ -39,15 +39,15 @@
         :first-button-text="`<i class='fas fa-angle-double-left'></i>`"
         :last-button-text="`<i class='fas fa-angle-double-right'></i>`"
         :click-handler="paginateClickCallback"
-        :container-class="'pagination__items'"
-        :page-class="'pagination__item'"
-        :page-link-class="'pagination__item-link'"
+        :container-class="'o-pagination__items'"
+        :page-class="'o-pagination__item'"
+        :page-link-class="'o-pagination__item-link'"
         :disabled-class="'is-disabled'"
         :active-class="'is-active'"
-        :prev-class="'is-prev pagination__item'"
-        :prev-link-class="'is-prev pagination__item-link'"
-        :next-class="'is-next pagination__item'"
-        :next-link-class="'is-next pagination__item-link'"
+        :prev-class="'is-prev o-pagination__item'"
+        :prev-link-class="'is-prev o-pagination__item-link'"
+        :next-class="'is-next o-pagination__item'"
+        :next-link-class="'is-next o-pagination__item-link'"
         :first-last-button="true"
         :hide-prev-next="true"
         :margin-pages="0"

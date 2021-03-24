@@ -4,7 +4,7 @@
       .fas.fa-spinner.fa-pulse
       |  ロード中
   .reports(v-else-if="reports.length > 0 || !isUncheckedReportsPage")
-    nav.pagination(v-if="totalPages > 1")
+    nav.o-pagination(v-if="totalPages > 1")
       paginate(
         v-model="currentPage"
         :page-count="totalPages"
@@ -17,17 +17,17 @@
         :first-last-button="true"
         :first-button-text="`<i class='fas fa-angle-double-left'></i>`"
         :last-button-text="`<i class='fas fa-angle-double-right'></i>`"
-        :container-class="'pagination__items'"
-        :page-class="'pagination__item'"
-        :page-link-class="'pagination__item-link'"
+        :container-class="'o-pagination__items'"
+        :page-class="'o-pagination__item'"
+        :page-link-class="'o-pagination__item-link'"
         :disabled-class="'is-disabled'"
-        :prev-class="'pagination__item is-prev'"
-        :prev-link-class="'pagination__item-link is-prev'"
-        :next-class="'pagination__item is-next'"
-        :next-link-class="'pagination__item-link is-next'"
+        :prev-class="'o-pagination__item is-prev'"
+        :prev-link-class="'o-pagination__item-link is-prev'"
+        :next-class="'o-pagination__item is-next'"
+        :next-link-class="'o-pagination__item-link is-next'"
         :active-class="'is-active'"
         :active-link-class="'is-active'"
-        :hide-prev-next="true")
+        :hide-prev-next="false")
     .thread-list.a-card
       .thread-list__items
         report(
@@ -38,7 +38,7 @@
       unconfirmed-link(
         v-if="isUncheckedReportsPage"
         label="未チェックの日報を一括で開く")
-    nav.pagination(v-if="totalPages > 1")
+    nav.o-pagination(v-if="totalPages > 1")
       paginate(
         v-model="currentPage"
         :page-count="totalPages"
@@ -51,17 +51,17 @@
         :first-last-button="true"
         :first-button-text="`<i class='fas fa-angle-double-left'></i>`"
         :last-button-text="`<i class='fas fa-angle-double-right'></i>`"
-        :container-class="'pagination__items'"
-        :page-class="'pagination__item'"
-        :page-link-class="'pagination__item-link'"
+        :container-class="'o-pagination__items'"
+        :page-class="'o-pagination__item'"
+        :page-link-class="'o-pagination__item-link'"
         :disabled-class="'is-disabled'"
-        :prev-class="'pagination__item is-prev'"
-        :prev-link-class="'pagination__item-link is-prev'"
-        :next-class="'pagination__item is-next'"
-        :next-link-class="'pagination__item-link is-next'"
+        :prev-class="'o-pagination__item is-prev'"
+        :prev-link-class="'o-pagination__item-link is-prev'"
+        :next-class="'o-pagination__item is-next'"
+        :next-link-class="'o-pagination__item-link is-next'"
         :active-class="'is-active'"
         :active-link-class="'is-active'"
-        :hide-prev-next="true")
+        :hide-prev-next="false")
   .o-empty-massage(v-else)
     .o-empty-massage__icon
       i.far.fa-smile

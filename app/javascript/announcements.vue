@@ -1,7 +1,7 @@
 <template lang="pug">
   .page-body
     .container(v-if="loaded")
-      nav.pagination
+      nav.o-pagination
         pager-top(
           v-if="totalPages > 1 && announcements.length > 0"
           v-model='currentPage'
@@ -12,15 +12,15 @@
           :first-button-text="`<i class='fas fa-angle-double-left'></i>`"
           :last-button-text="`<i class='fas fa-angle-double-right'></i>`"
           :click-handler="paginateClickCallback"
-          :container-class="'pagination__items'"
-          :page-class="'pagination__item'"
-          :page-link-class="'pagination__item-link'"
+          :container-class="'o-pagination__items'"
+          :page-class="'o-pagination__item'"
+          :page-link-class="'o-pagination__item-link'"
           :disabled-class="'is-disabled'"
           :active-class="'is-active'"
-          :prev-class="'is-prev pagination__item'"
-          :prev-link-class="'is-prev pagination__item-link'"
-          :next-class="'is-next pagination__item'"
-          :next-link-class="'is-next pagination__item-link'"
+          :prev-class="'is-prev o-pagination__item'"
+          :prev-link-class="'is-prev o-pagination__item-link'"
+          :next-class="'is-next o-pagination__item'"
+          :next-link-class="'is-next o-pagination__item-link'"
           :first-last-button="true"
           :hide-prev-next="true"
           :margin-pages="0"
@@ -37,7 +37,7 @@
           i.far.fa-smile
         p.o-empty-massage__text
           | {{ title }}はありません
-      nav.pagination
+      nav.o-pagination
         pager-bottom(
           v-if="totalPages > 1 && announcements.length > 0"
           v-model='currentPage'
@@ -48,15 +48,15 @@
           :first-button-text="`<i class='fas fa-angle-double-left'></i>`"
           :last-button-text="`<i class='fas fa-angle-double-right'></i>`"
           :click-handler="paginateClickCallback"
-          :container-class="'pagination__items'"
-          :page-class="'pagination__item'"
-          :page-link-class="'pagination__item-link'"
+          :container-class="'o-pagination__items'"
+          :page-class="'o-pagination__item'"
+          :page-link-class="'o-pagination__item-link'"
           :disabled-class="'is-disabled'"
           :active-class="'is-active'"
-          :prev-class="'is-prev pagination__item'"
-          :prev-link-class="'is-prev pagination__item-link'"
-          :next-class="'is-next pagination__item'"
-          :next-link-class="'is-next pagination__item-link'"
+          :prev-class="'is-prev o-pagination__item'"
+          :prev-link-class="'is-prev o-pagination__item-link'"
+          :next-class="'is-next o-pagination__item'"
+          :next-link-class="'is-next o-pagination__item-link'"
           :first-last-button="true"
           :hide-prev-next="true"
           :margin-pages="0"
