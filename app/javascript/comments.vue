@@ -1,6 +1,10 @@
 <template lang="pug">
   .thread-comments-container
-    h2.thread-comments-container__title コメント
+    .comments(v-if="loaded === false && commentableType === 'Product'")
+      .empty
+        .fas.fa-spinner.fa-pulse
+        | ロード中
+    h2.thread-comments-container__title(v-else) コメント
     .thread-comments
       comment(v-for="(comment, index) in comments"
         :key="comment.id"
@@ -60,7 +64,8 @@ export default {
       description: '',
       tab: 'comment',
       buttonDisabled: false,
-      defaultTextareaSize: null
+      defaultTextareaSize: null,
+      loaded: false,
     }
   },
   created() {
@@ -77,6 +82,7 @@ export default {
       })
       .then(json => {
         json.forEach(c => { this.comments.push(c) });
+        this.loaded = true
       })
       .catch(error => {
         console.warn('Failed to parsing', error)
