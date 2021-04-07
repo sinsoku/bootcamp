@@ -5,39 +5,34 @@
         h2.card-header__title
           | メンター向けユーザーメモ
       .card-body
-        .js-target-blank.is-long-text(v-html="markdownMemo")
+        .js-target-blank.is-long-text(
+          v-html="markdownMemo")
       footer.card-footer
         .card-footer-actions
-          button.card-footer-actions__action.a-button.is-md.is-primary.is-block(
-            @click="editMemo"
-          )
+          button.card-footer-actions__action.a-button.is-md.is-primary.is-block(@click="editMemo")
             i.fas.fa-pen
             | 編集
     .thread-comment-form__form.a-card(v-show="editing")
       .thread-comment-form__tabs.js-tabs
         .thread-comment-form__tab.js-tabs__tab(
-          :class="{ 'is-active': isActive('memo') }",
-          @click="changeActiveTab('memo')"
-        )
+          :class="{'is-active': isActive('memo')}"
+          @click="changeActiveTab('memo')")
           | メモ
         .thread-comment-form__tab.js-tabs__tab(
-          :class="{ 'is-active': isActive('preview') }",
-          @click="changeActiveTab('preview')"
-        )
+          :class="{'is-active': isActive('preview')}"
+          @click="changeActiveTab('preview')")
           | プレビュー
       .thread-comment-form__markdown-parent.js-markdown-parent
         .thread-comment-form__markdown.is-editor.js-tabs__content(
-          :class="{ 'is-active': isActive('memo') }"
-        )
+          :class="{'is-active': isActive('memo')}")
           textarea.a-text-input.js-warning-form.thread-comment-form__textarea(
-            :id="`js-user-mentor-memo`",
-            data-preview="#user-mentor-memo-preview",
-            v-model="memo",
+            :id="`js-user-mentor-memo`"
+            data-preview="#user-mentor-memo-preview"
+            v-model="memo"
             name="user[memo]"
-          )
+            )
         .thread-comment-form__markdown.is-preview.js-tabs__content(
-          :class="{ 'is-active': isActive('preview') }"
-        )
+          :class="{'is-active': isActive('preview')}")
           .is-long-text.thread-comment-form__preview(v-html="markdownMemo")
       .card-footer
         .thread-comment-form__actions
@@ -50,106 +45,106 @@
 </template>
 
 <script>
-import TextareaInitializer from "./textarea-initializer";
-import MarkdownInitializer from "./markdown-initializer";
+import TextareaInitializer from './textarea-initializer'
+import MarkdownInitializer from './markdown-initializer'
 
 export default {
-  props: ["userId"],
+  props: ['userId'],
   data: () => {
     return {
-      memo: "",
-      tab: "memo",
-      editing: false,
-    };
+      memo: '',
+      tab: 'memo',
+      editing: false
+    }
   },
-  created() {
+  created () {
     fetch(`/api/users/${this.userId}.json`, {
-      method: "GET",
+      method: 'GET',
       headers: {
-        "X-Requested-With": "XMLHttpRequest",
+        'X-Requested-With': 'XMLHttpRequest'
       },
-      credentials: "same-origin",
-      redirect: "manual",
+      credentials: 'same-origin',
+      redirect: 'manual'
     })
-      .then((response) => {
-        return response.json();
-      })
-      .then((json) => {
-        if (json["mentor_memo"]) {
-          this.memo = json["mentor_memo"];
-        }
-      })
-      .catch((error) => {
-        console.warn("Failed to parsing", error);
-      });
+    .then(response => {
+      return response.json()
+    })
+    .then(json => {
+      if (json['mentor_memo']){
+        this.memo = json['mentor_memo']
+      }
+    })
+    .catch(error => {
+      console.warn('Failed to parsing', error)
+    })
   },
   mounted() {
-    TextareaInitializer.initialize("#js-user-mentor-memo");
+    TextareaInitializer.initialize('#js-user-mentor-memo')
   },
   methods: {
     isActive(tab) {
-      return this.tab === tab;
+      return this.tab === tab
     },
     changeActiveTab(tab) {
-      this.tab = tab;
+      this.tab = tab
     },
-    token() {
-      const meta = document.querySelector('meta[name="csrf-token"]');
-      return meta ? meta.getAttribute("content") : "";
+    token () {
+      const meta = document.querySelector('meta[name="csrf-token"]')
+      return meta ? meta.getAttribute('content') : ''
     },
-    updateMemo() {
+    updateMemo () {
       let params = {
         user: {
-          mentor_memo: this.memo,
-        },
-      };
+          mentor_memo: this.memo
+        }
+      }
       fetch(`/api/users/${this.userId}`, {
-        method: "PUT",
+        method: 'PUT',
         headers: {
-          "X-Requested-With": "XMLHttpRequest",
-          "Content-Type": "application/json; charset=utf-8",
-          "X-CSRF-Token": this.token(),
+          'X-Requested-With': 'XMLHttpRequest',
+          'Content-Type': 'application/json; charset=utf-8',
+          'X-CSRF-Token': this.token()
         },
-        credentials: "same-origin",
-        redirect: "manual",
-        body: JSON.stringify(params),
+        credentials: 'same-origin',
+        redirect: 'manual',
+        body: JSON.stringify(params)
       })
-        .then((response) => {
+        .then(response => {
           this.editing = false;
         })
-        .catch((error) => {
-          console.warn("Failed to parsing", error);
-        });
-    },
+        .catch(error => {
+          console.warn('Failed to parsing', error)
+        })
+      },
     cancel() {
       fetch(`/api/users/${this.userId}.json`, {
-        method: "GET",
+        method: 'GET',
         headers: {
-          "X-Requested-With": "XMLHttpRequest",
+          'X-Requested-With': 'XMLHttpRequest'
         },
-        credentials: "same-origin",
-        redirect: "manual",
+        credentials: 'same-origin',
+        redirect: 'manual'
       })
-        .then((response) => {
-          return response.json();
+        .then(response => {
+          return response.json()
         })
-        .then((json) => {
-          this.memo = json["mentor_memo"];
+        .then(json => {
+          this.memo = json['mentor_memo']
         })
-        .catch((error) => {
-          console.warn("Failed to parsing", error);
-        });
-      this.editing = false;
+        .catch(error => {
+          console.warn('Failed to parsing', error)
+        })
+        this.editing = false;
     },
-    editMemo() {
+    editMemo () {
       this.editing = true;
-    },
+    }
   },
   computed: {
     markdownMemo() {
-      const markdownInitializer = new MarkdownInitializer();
-      return markdownInitializer.render(this.memo);
-    },
-  },
-};
+      const markdownInitializer = new MarkdownInitializer()
+      return markdownInitializer.render(this.memo)
+    }
+  }
+}
 </script>
