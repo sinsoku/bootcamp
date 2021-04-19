@@ -25,10 +25,10 @@ header.page-header
               | 順番変更
       .page-header-actions
         ul.page-header-actions__items
-          li.page-header-actions__item.is-hidden-sm-down
-            .page-header-switch
-              label.page-header-switch__label(for='modal-progress')
-                span.page-header-switch__label-text
+          li.page-header-actions__item
+            .switch.is-hidden-sm-down
+              label.switch__label(for='modal-progress')
+                span.switch__label-text
                   | みんなの進捗
                 .a-help
                   i.fas.fa-question
@@ -36,8 +36,8 @@ header.page-header
                 input.js-users-visibility__trigger#display-progress(type = 'checkbox' checked = 'checked')
                 span#checkbox-progress
           - if current_user.admin?
-            li.page-header-actions__item
-              = link_to new_practice_path(course_id: @course), class: 'a-button is-md is-secondary is-block' do
+            li.page-header-actions__item.is-mentor-only
+              = link_to new_practice_path(course_id: @course), class: 'a-button is-md is-warning is-block' do
                 i.fas.fa-plus
                 | プラクティス作成
           li.page-header-actions__item
