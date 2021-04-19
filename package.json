@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "scripts": {
     "lint": "run-p lint:*",
     "lint:eslint": "eslint 'app/javascript/**/*.{js,vue}'",
@@ -7,6 +8,9 @@
     "fix:eslint": "yarn lint:eslint --fix",
     "fix:prettier": "yarn lint:prettier --write"
   },
+=======
+  "license": "MIT",
+>>>>>>> 7318223b... 意図しない変更のため
   "dependencies": {
     "@johmun/vue-tags-input": "^2.0.1",
     "@rails/webpacker": "^5.2.1",
