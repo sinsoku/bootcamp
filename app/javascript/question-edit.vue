@@ -158,6 +158,7 @@ import Tags from './question_tags.vue'
 import UserIcon from './user-icon.vue'
 import moment from 'moment'
 moment.locale('ja')
+
 export default {
   components: {
     watch: Watch,
@@ -288,6 +289,7 @@ export default {
         this.finishEditing(true)
         return
       }
+
       const { title, description, practiceId } = this.edited
       const params = {
         question: {
