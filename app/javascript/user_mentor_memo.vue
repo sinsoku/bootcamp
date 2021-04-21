@@ -70,8 +70,8 @@ export default {
       return response.json()
     })
     .then(json => {
-      if (json['mentor_memo']){
-        this.memo = json['mentor_memo']
+      if (json.mentor_memo){
+        this.memo = json.mentor_memo
       }
     })
     .catch(error => {
@@ -93,7 +93,7 @@ export default {
       return meta ? meta.getAttribute('content') : ''
     },
     updateMemo () {
-      let params = {
+      const params = {
         user: {
           mentor_memo: this.memo
         }
@@ -111,6 +111,7 @@ export default {
       })
         .then(response => {
           this.editing = false;
+          return response
         })
         .catch(error => {
           console.warn('Failed to parsing', error)
@@ -129,7 +130,7 @@ export default {
           return response.json()
         })
         .then(json => {
-          this.memo = json['mentor_memo']
+          this.memo = json.mentor_memo
         })
         .catch(error => {
           console.warn('Failed to parsing', error)
