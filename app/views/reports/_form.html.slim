@@ -24,7 +24,7 @@
                 span.form-radio-button__label-name
                   = b.value
 
-      .form-item#tasks
+      .form-item#tasks.is_inactive
         label.a-label
           | 学習時間
         = f.fields_for :learning_times do |learning_time|
@@ -33,6 +33,8 @@
           = link_to_add_association f, :learning_times, class: 'a-button is-md is-primary' do
             i.fas.fa-plus
             | 学習時間追加
+      input.js-no-practice-time(type = 'checkbox' checked = 'checked')
+        | 勉強時間なかったけどどうしても日報が書きたい！
 
   .form__items
     .form-item
