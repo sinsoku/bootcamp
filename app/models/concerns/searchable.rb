@@ -46,7 +46,7 @@ module Searchable
 
   def description
     case self
-    when Page
+    when Page, Product
       self[:body]
     else
       self[:description]
