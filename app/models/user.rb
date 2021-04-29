@@ -260,6 +260,12 @@ class User < ApplicationRecord
       .unretired
       .order(:created_at)
   }
+  scope :desc_tagged_with, lambda { |tag_name|
+    with_attached_avatar
+      .unretired
+      .order(updated_at: :desc)
+      .tagged_with(tag_name)
+  }
 
   class << self
     def announcement_receiver(target)
