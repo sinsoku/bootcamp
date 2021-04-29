@@ -29,6 +29,9 @@
   &.is-md
     width: 40rem
     max-width: 100%
+  .checkboxes
+    &:not(:last-child)
+      margin-bottom: 1rem
 
 .form-item__button
   text-align: center
@@ -41,7 +44,8 @@
   +media-breakpoint-down(sm)
     margin-top: -.25rem
 
-.form-item__times + .form-item__times
+.form-item__times + .form-item__times .form-item__times-inner,
+.form-item__times + input + .form-item__times .form-item__times-inner
   margin-top: 1rem
 
 .form-item__times-inner
