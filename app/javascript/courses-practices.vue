@@ -24,7 +24,7 @@
               :href='`${category.edit_admin_category_path}`'
             )
               i.fas.fa-pen
-          .js-markdown-view.js-target-blank.is-long-text
+          .js-markdown-view.js-target-blank.is-long-text(:style='styleObject')
             p {{ category.description }}
         .categories-item__body
           .category-practices.js-category-practices
@@ -60,7 +60,10 @@ export default {
   data: () => {
     return {
       categories: null,
-      learnings: null
+      learnings: null,
+      styleObject: {
+        display: 'block'
+      }
     }
   },
   computed: {
@@ -108,9 +111,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.js-markdown-view.js-target-blank.is-long-text {
-  display: block;
-}
-</style>
